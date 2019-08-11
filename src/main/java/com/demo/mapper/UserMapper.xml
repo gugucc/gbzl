@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 设置为IUserDao接口方法提供sql语句配置 -->
+<mapper namespace="com.demo.dao.UserDao">
+
+    <select id="findUserById" resultType="com.demo.entity.User" parameterType="int">
+        SELECT * FROM user WHERE id = #{id}
+    </select>
+
+    <!-- 根据用户名和密码查询 -->
+    <select id="findUserByNameAndPwd" resultType="com.demo.entity.User">
+        select * from user where username=#{username} and password=#{password}
+    </select>
+
+    <!-- 增加用户 -->
+    <insert id="addUser" parameterType="com.demo.entity.User">
+        insert into user(username,password,email,tel,sex) values(#{username},#{password},#{email},#{tel},#{sex})
+    </insert>
+    <!-- 根据用户名查询 -->
+    <select id="findByUserName" resultType="com.demo.entity.User">
+        select * from user where username=#{username}
+    </select>
+
+</mapper>
