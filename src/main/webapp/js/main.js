@@ -1,4 +1,4 @@
-(function () {
+;(function () {
 	
 	'use strict';
 
@@ -141,9 +141,9 @@
 	};
 
 
-	/*var dropdown = function() {
+	var dropdown = function() {
 
-		$('.has-dropdown').mouseover(function(){
+		$('.has-dropdown').mouseenter(function(){
 
 			var $this = $(this);
 			$this
@@ -151,7 +151,7 @@
 				.css('display', 'block')
 				.addClass('animated-fast fadeInUpMenu');
 
-		}).mouseout(function(){
+		}).mouseleave(function(){
 			var $this = $(this);
 
 			$this
@@ -160,7 +160,7 @@
 				.removeClass('animated-fast fadeInUpMenu');
 		});
 
-	};*/
+	};
 
 
 	var goToTop = function() {
@@ -237,20 +237,16 @@
 	     	]
 		})
 	};
-    window.onload=function(){
-				UE.getEditor('editor',{
-					initialFrameWidth :800,//设置编辑器宽度
-     				initialFrameHeight:400,//设置编辑器高度
-     				scaleEnabled:true
-				});
-			};
+
+
+	
 	$(function(){
 		mobileMenuOutsideClick();
 		offcanvasMenu();
 		burgerMenu();
 		contentWayPoint();
 		sliderMain();
-		/*dropdown();*/
+		dropdown();
 		goToTop();
 		loaderPage();
 		owlCrouselFeatureSlide();

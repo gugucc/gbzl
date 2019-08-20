@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>告别直男</title>
+    <title>Stuff Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -32,27 +32,27 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
     <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
     <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 
     <!-- Magnific Popup -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/magnific-popup.css">
 
     <!-- Flexslider  -->
-    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flexslider.css">
 
     <!-- Owl Carousel -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.theme.default.min.css">
 
     <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 
     <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/modernizr-2.6.2.min.js"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
@@ -76,18 +76,15 @@
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li class="search">
-                                <input id="search_box" type="text"placeholder="搜索..." maxlength="30" autocomplete="off" />
-                                <a id="search"><img src="img/search.png"/></a>
-                            </li>
+                            <%--<li class="search">
+                                <input id="search_box" type="text" placeholder="搜索..." maxlength="30" autocomplete="off" />
+                                <a id="search"><img src="img/search.png" /></a>
+                            </li>--%>
                             <li class="active">
-                                <a href="index">主页</a>
+                                <a href="index.html">主页</a>
                             </li>
                             <li>
                                 <a href="blog">博客</a>
-                            </li>
-                            <li>
-                                <a href="event">我的博客</a>
                             </li>
                             <li>
                                 <a href="travel">视频</a>
@@ -96,7 +93,21 @@
                                 <a href="release">发表博客</a>
                             </li>
                             <li>
-                                <a href="login">登录</a>
+                                <a href="event">我的博客</a>
+                            </li>
+                            <li class="has-dropdown">
+                                <a href="login">${USER_SESSION.username}</a>
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="single.html">个人信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">切换帐号</a>
+                                    </li>
+                                    <li>
+                                        <a href="${pageContext.request.contextPath}/logout">退出</a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>
@@ -186,6 +197,9 @@
             </ul>
         </div>
     </aside>
+    <div class="tlinks">Collect from
+        <a href="http://www.cssmoban.com/">网页模板</a>
+    </div>
 
     <div id="colorlib-container">
         <div class="container">
@@ -582,9 +596,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <p>
-                        <small class="block"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small>
+                        <small class="block">
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> Colorlib -  More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+                        </small>
                         <small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
                     </p>
                 </div>
@@ -598,22 +612,22 @@
 </div>
 
 <!-- jQuery -->
-<script src="js/jquery-3.1.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <!-- jQuery Easing -->
-<script src="js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
 <!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.waypoints.min.js"></script>
 <!-- Flexslider -->
-<script src="js/jquery.flexslider-min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.flexslider-min.js"></script>
 <!-- Owl carousel -->
-<script src="js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
 <!-- Magnific Popup -->
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/magnific-popup-options.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/magnific-popup-options.js"></script>
 <!-- Main -->
-<script src="js/main.js"></script>
+<script src="${pageContext.request.contextPath}/js/main.js"></script>
 
 </body>
 

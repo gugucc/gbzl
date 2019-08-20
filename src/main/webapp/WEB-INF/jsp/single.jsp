@@ -75,16 +75,39 @@
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li class="search">
-                                <input id="search_box" type="text"placeholder="搜索..." maxlength="30" autocomplete="off" />
-                                <a id="search"><img src="img/search.png"/></a>
+                            <%--<li class="search">
+                                <input id="search_box" type="text" placeholder="搜索..." maxlength="30" autocomplete="off" />
+                                <a id="search"><img src="img/search.png" /></a>
+                            </li>--%>
+                            <li class="active">
+                                <a href="index.html">主页</a>
                             </li>
-                            <li class="active"><a href="index.html">主页</a></li>
-                            <li class="has-dropdown"><a href="blog.html">博客</a></li>
-                            <li><a href="single.html">我的博客</a></li>
-                            <li><a href="travel.html">视频</a></li>
-                            <li><a href="about.html">我的信息</a></li>
-                            <li><a href="login.html">登录</a></li>
+                            <li>
+                                <a href="blog">博客</a>
+                            </li>
+                            <li>
+                                <a href="travel">视频</a>
+                            </li>
+                            <li>
+                                <a href="release">发表博客</a>
+                            </li>
+                            <li>
+                                <a href="event">我的博客</a>
+                            </li>
+                                <li class="has-dropdown">
+                                    <a href="login">${USER_SESSION.username}</a>
+                                    <ul class="dropdown">
+                                        <li>
+                                            <a href="single.html">个人信息</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">切换帐号</a>
+                                        </li>
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/logout">退出</a>
+                                        </li>
+                                    </ul>
+                                </li>
                         </ul>
                     </div>
                 </div>

@@ -4,9 +4,10 @@ public class User {
     private String id;
     private String username;
     private String password;
-    private String email;
-    private String tel;
     private String sex;
+    private String tel;
+    private String email;
+    private String avatar;
 
     public String getId() {
         return id;
@@ -54,5 +55,13 @@ public class User {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

@@ -27,11 +27,7 @@ public class ViewController {
         ModelAndView mv=new ModelAndView("event");
         return mv;
     }
-    @RequestMapping("index")
-    public ModelAndView index(){
-        ModelAndView mv=new ModelAndView("index");
-        return mv;
-    }
+
     /*@RequestMapping("login")
     public ModelAndView login(){
         ModelAndView mv=new ModelAndView("login");

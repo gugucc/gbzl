@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
@@ -37,19 +38,35 @@ public class UserController {
 
     @RequestMapping(value="/login_Action",method= RequestMethod.POST)
     @ResponseBody
-    public ModelAndView login(@RequestParam String username, @RequestParam String password, HttpServletResponse response, Model model) throws IOException {
+    public ModelAndView login(@RequestParam String username, @RequestParam String password, HttpSession session, Model model) throws IOException {
         System.out.println("用户登录："+username+password);
         User user = userService.login(username,password);
         if (user!=null){
-            model.addAttribute("msg", "登录成功");
-            model.addAttribute("username",username);
-            ModelAndView mv=new ModelAndView("index","model1",model);
+            //将用户对象添加到Session中
+            session.setAttribute("USER_SESSION",user);
+            //重定向到主页面的跳转方法
+            ModelAndView mv=new ModelAndView("index");
             return mv;
         }else {
-            model.addAttribute("msg", "登录失败");
-            ModelAndView mv=new ModelAndView("portal","model1",model);
+            model.addAttribute("msg","用户名或密码错误，请重新登录！");
+            ModelAndView mv=new ModelAndView("login","model",model);
             return mv;
         }
+    }
+
+    @RequestMapping("index")
+    public ModelAndView index(){
+        ModelAndView mv=new ModelAndView("index");
+        return mv;
+    }
+
+    @RequestMapping(value = "/logout")
+     public ModelAndView logout(HttpSession session){
+        //清除session
+        session.invalidate();
+        //重定向到登录页面的跳转方法
+        ModelAndView mv=new ModelAndView("login");
+        return mv;
     }
 
 

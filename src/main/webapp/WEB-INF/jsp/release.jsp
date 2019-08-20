@@ -59,7 +59,7 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-
+    <script src="${pageContext.request.contextPath}/js/ckeditor.js"></script>
 </head>
 <body>
 
@@ -75,16 +75,39 @@
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li class="search">
+                            <%--<li class="search">
                                 <input id="search_box" type="text" placeholder="搜索..." maxlength="30" autocomplete="off" />
-                                <a id="search"><img src="img/search.png"/></a>
+                                <a id="search"><img src="img/search.png" /></a>
+                            </li>--%>
+                            <li class="active">
+                                <a href="index.html">主页</a>
                             </li>
-                            <li><a href="index.html">主页</a></li>
-                            <li><a href="blog.html">博客</a></li>
-                            <li><a href="single.html">我的博客</a></li>
-                            <li><a href="travel.html">视频</a></li>
-                            <li class="active"><a href="release.html">发表博客</a></li>
-                            <li><a href="login.html">登录</a></li>
+                            <li>
+                                <a href="blog">博客</a>
+                            </li>
+                            <li>
+                                <a href="travel">视频</a>
+                            </li>
+                            <li>
+                                <a href="release">发表博客</a>
+                            </li>
+                            <li>
+                                <a href="event">我的博客</a>
+                            </li>
+                                <li class="has-dropdown">
+                                    <a href="login">${USER_SESSION.username}</a>
+                                    <ul class="dropdown">
+                                        <li>
+                                            <a href="single.html">个人信息</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">切换帐号</a>
+                                        </li>
+                                        <li>
+                                            <a href="${pageContext.request.contextPath}/logout">退出</a>
+                                        </li>
+                                    </ul>
+                                </li>
                         </ul>
                     </div>
                 </div>
@@ -102,7 +125,7 @@
             </div>
         </div>
     </aside>
-
+    //编辑器
     <div id="colorlib-container">
         <div class="container">
             <div class="row">
@@ -110,19 +133,22 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2 class="heading-2">&nbsp;&nbsp;Say something</h2>
-                            <form action="#">
-
+                           <%-- <form action="uploadBlog" method="post">--%>
                                 <div class="row form-group">
-                                    <div class="col-md"><input class="form-control" type="text" placeholder="请输入标题..." maxlength="30" style="width:60%; height: 50px;margin: 0 auto;"/></div>
+                                    <div class="col-md">
+                                        <input id="blog_title" class="form-control" type="text" placeholder="请输入标题..." maxlength="30" style="width:60%; height: 50px;margin: 0 auto;"/></div>
                                     <div class="col-md-12">
                                         <!-- <label for="message">Message</label> -->
-                                        <div id="editor" style="width: 100%; height: 400px; margin: 0 auto; "></div>
+                                        <%--<div id="editor" style="width: 100%; height: 400px; margin: 0 auto; "></div>--%>
+                                        <div name="content" id="editor">
+                                            <p>This is the initial editor content.</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="提交" class="btn btn-primary">
+                                    <input id="save" type="submit" value="提交" class="btn btn-primary">
                                 </div>
-                            </form>
+                           <%-- </form>--%>
                         </div>
                     </div>
                 </div>
@@ -296,25 +322,55 @@
 </div>
 
 <!-- jQuery -->
-<script src="js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 <!-- jQuery Easing -->
-<script src="js/jquery.easing.1.3.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.easing.1.3.js"></script>
 <!-- Bootstrap -->
-<script src="js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <!-- Waypoints -->
-<script src="js/jquery.waypoints.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.waypoints.min.js"></script>
 <!-- Flexslider -->
-<script src="js/jquery.flexslider-min.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.flexslider-min.js"></script>
 <!-- Owl carousel -->
-<script src="js/owl.carousel.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
 <!-- Magnific Popup -->
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/magnific-popup-options.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/magnific-popup-options.js"></script>
 <!-- Main -->
-<script src="js/main.js"></script>
-<script src="js/utf8-jsp/ueditor.config.js"></script>
-<script src="js/utf8-jsp/ueditor.all.min.js"></script>
-<script src="js/utf8-jsp/ueditor.parse.js"></script>
+<script src="${pageContext.request.contextPath}/js/main.js"></script>
+<script>
+    var data;
+    ClassicEditor.create(document.querySelector('#editor'), {
+        ckfinder: {
+            uploadUrl: 'upload_submit'
+        }
+    }).then(editor => {
+        window.editor = editor;
+        editor.updateSourceElement();
+        data = editor.getData();
+        console.log(data);
+    })
+        .catch(error => {
+            console.log(error);
+        });
+</script>
+<script type="text/javascript">
+    $(function(){
+    $("#save").on("click",function () {
+        newData = editor.getData();
+        console.log(newData);
+        $.ajax({
+            type: 'POST',
+            url : "uploadBlog",
+            data: {"blog_title":$('#blog_title').val(),"content":newData,"username":"${USER_SESSION.username}"},             //获取表单数据
+            success : function(data) {
+                    alert("保存成功");
+//                                  window.parent.page();                 //调用父窗体方法，当关闭子窗体刷新父窗体
+            }
+        });
+    })
+    })
+</script>
 </body>
 </html>
 

@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
-
 <head>
 
     <meta charset="utf-8">
@@ -18,9 +17,9 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/form-elements.css">
-    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/form-elements.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style1.css">
 
     <!-- Favicon and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.png">
@@ -149,13 +148,12 @@
 </div>
 
 <!-- Javascript -->
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="js/jquery.backstretch.min.js"></script>
-<script src="js/scripts.js"></script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.backstretch.min.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
 
 <!--[if lt IE 10]>
-<script src="assets/js/placeholder.js"></script>
 <![endif]-->
 
 </body>
